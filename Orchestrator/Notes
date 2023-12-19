@@ -1,0 +1,27 @@
+-------------------------------------install paramiko------------------------- (scp copy a file)
+
+$ pip install paramiko scp
+$ pip3 install paramiko scp
+
+$ chmod 400 rmit.pem
+
+$ scp -i rmit.pem /Users/quang/Desktop/CTA/colorA_4_2.json ubuntu@54.252.7.126:/home/ubuntu
+
+
+// python3 orchestrator.py <parameter1: (h)> <parameter2: (q)>
+$ python3 main.py 4 4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
