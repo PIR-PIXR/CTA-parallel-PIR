@@ -1,5 +1,7 @@
 import os
 import sys
+import math
+import random
 import shutil
 import paramiko
 import subprocess
@@ -11,11 +13,11 @@ SERVER_PATH = "/home/ubuntu"
 SERVER_NAME = "ubuntu"
 PRIVKEY_FILE = "rmit.pem"
 CTA_PATH = os.path.join(HOME_PATH, "CTA")
+PBC_PATH = os.path.join(HOME_PATH, "PBC")
 LOG_PATH = os.path.join(HOME_PATH, "Logs")
 SEALPIR_PATH = os.path.join(HOME_PATH, "ParallelSealPIR")
 ORCHESTRATOR_PATH = os.path.join(HOME_PATH, "Orchestrator")
 AWSKEY_PATH = os.path.join(HOME_PATH, "AWSkey")
-PARALLEL_SEAL_PIR_PATH = os.path.join(HOME_PATH, "ParallelSealPIR")
 
 def run_CTA(h, q):
     java_file_path = os.path.join(CTA_PATH, "CTA.java")
@@ -37,7 +39,7 @@ def read_servers_ip():
         return []
 
 # Sent file from local machine to server
-def scp_file_from_local(server_ip, username, privkey_path, local_path, server_path):
+def send_file_to_server(server_ip, username, privkey_path, local_path, server_path):
     # Create an SSH client
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -48,16 +50,14 @@ def scp_file_from_local(server_ip, username, privkey_path, local_path, server_pa
 
         with SCPClient(ssh.get_transport()) as scp:
             scp.put(local_path, server_path)
-
         ssh.close()
 
         print(f"File successfully sent from {local_path} to {server_ip}:{server_path}")
-
     except Exception as e:
         print(f"Error transferring file from {local_path} to {server_ip}:{server_path}: {e}")
 
 # Sent file from server to local machine
-def scp_file_from_server(server_ip, username, privkey_path, local_path, server_path):
+def receive_file_from_server(server_ip, username, privkey_path, local_path, server_path):
     # Create an SSH client
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -66,7 +66,6 @@ def scp_file_from_server(server_ip, username, privkey_path, local_path, server_p
         # Connect to the remote server
         ssh.connect(server_ip, username=username, key_filename=privkey_path)
 
-        # Use SCP to download the file from the server to the local machine
         with SCPClient(ssh.get_transport()) as scp:
             scp.get(server_path, local_path)
 
@@ -78,11 +77,10 @@ def scp_file_from_server(server_ip, username, privkey_path, local_path, server_p
 
         print(f"File successfully received from {server_ip}:{server_path} to {local_path}")
         print(f"Remote file {server_path} deleted.")
-
     except Exception as e:
         print(f"Error transferring file from {server_ip}:{server_path} to {local_path}: {e}")
 
-def copy_and_remove(src_path, dest_path):
+def copy_and_remove_file(src_path, dest_path):
     try:
         # Copy the file from source to destination
         shutil.copy(src_path, dest_path)
@@ -96,7 +94,7 @@ def copy_and_remove(src_path, dest_path):
         print(f"An error occurred: {e}")
 
 # Read indices from the file created by CTA
-def read_indices(file_path):
+def read_indices_from_file(file_path):
     entries = []
 
     with open(file_path, 'r') as file:
@@ -143,100 +141,204 @@ def generate_servers_list(server_ips, entries, output_file_path):
 
     print(f"Servers_list successfully saved to {output_file_path}")
 
-def build_parallel_SealPIR(sealpir_path):
-    # Change to the project directory
-    os.chdir(sealpir_path)
-    # Run cmake
+def build_parallel_SealPIR():
+    os.chdir(SEALPIR_PATH)
     subprocess.run(["cmake", "."])
-    # Run make
     subprocess.run(["make"])
 
-def run_SealPIR_client(client_path):
-    # Change the current working directory to the client path
-    os.chdir(client_path)
+def run_SealPIR_client():
+    os.chdir(SEALPIR_PATH)
     # Run pirmessage_client
     subprocess.run(["./pirmessage_client"], check=True)
     print("pirmessage_client successfully executed")
 
-
-def run_SealPIR_server(server_ip, username, privkey_path, server_path, port):
-    # Create an SSH client
+def run_SealPIR_server(server_ip, privkey_path, port):
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     # Connect to the remote server
-    ssh.connect(server_ip, username=username, key_filename=privkey_path)
+    ssh.connect(server_ip, username=SERVER_NAME, key_filename=privkey_path)
 
     # Run pirmessage_server on the remote server with the specified port
-    command = f"cd {server_path} && ./pirmessage_server -port {port}"
+    command = f"cd {SERVER_PATH} && ./pirmessage_server -port {port}"
     ssh.exec_command(command)
 
     print("pirmessage_server successfully sent and executed on the remote server")
 
     ssh.close()
-
-def main_parallel_SealPIR():
-    color = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
-         'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    
+def generate_random_TX_index(num_values):
+    
     if len(sys.argv) >= 3:
         h = int(sys.argv[1])
         q = int(sys.argv[2])
+        
+    path = os.path.join(ORCHESTRATOR_PATH, f"list_TXs_{h}_{q}.txt")
+    
+    # Function to generate a random j value in the range [1, q^h]
+    def random_j(q, h):
+        return random.randint(1, int(math.pow(q, h)))
 
-        privkey_path = os.path.join(AWSKEY_PATH, PRIVKEY_FILE)
+    # Generate random TX indices
+    random_TX_indicies = [random_j(q, h) for _ in range(num_values)]
 
-        # Run the CTA
-        print("Running CTA_db: Setup Color databases...")
-        run_CTA(h, q)
+    # Save the values in the specified file
+    with open(path, "w") as file:
+        for value in random_TX_indicies:
+            file.write(str(value) + "\n")
+    # Copy the file from source to destination
+    shutil.copy(path, CTA_PATH)
+    # Copy the file from source to destination
+    shutil.copy(path, PBC_PATH)
+        
+    print(f"{num_values} random TX indices saved in {path}")
+    
 
-        # Read Servers' IP
-        server_ips = read_servers_ip()
-        for i in range(h):
-            print("Server address: " + server_ips[i])
-            local_file_path = os.path.join(CTA_PATH, f"color{color[i]}_{h}_{q}.json")
-            scp_file_from_local(server_ips[i], SERVER_NAME, privkey_path, local_file_path, SERVER_PATH)
+def color_parallel_SealPIR(h, q):
+    color = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
+             'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
-        # Read indices
-        color_indices_path = os.path.join(ORCHESTRATOR_PATH, f"color_indices_{h}_{q}.txt")
-        output_file_path = os.path.join(PARALLEL_SEAL_PIR_PATH, "servers_list.txt")
-        entries = read_indices(color_indices_path)
-        # Generate servers_list.txt
-        generate_servers_list(server_ips, entries, output_file_path)
+    privkey_path = os.path.join(AWSKEY_PATH, PRIVKEY_FILE)
 
-        # Build SealPIR for client and servers
-        build_parallel_SealPIR(PARALLEL_SEAL_PIR_PATH)
+    # Run the CTA
+    print("Running CTA_db: Setup Color databases...")
+    run_CTA(h, q)
 
-        # Send pirmessage_server to each server
-        local_file_path = os.path.join(PARALLEL_SEAL_PIR_PATH, 'pirmessage_server')
-        for i in range(h):
-            print("Server address: " + server_ips[i])
-            scp_file_from_local(server_ips[i], SERVER_NAME, privkey_path, local_file_path, SERVER_PATH)
-            # Run SealPIR Servers
-            run_SealPIR_server(server_ips[i], SERVER_NAME, privkey_path, SERVER_PATH, 3000)
+    # Read Servers' IP and send color databases to each server
+    server_ips = read_servers_ip()
+    for i in range(h):
+        print(f"Server address: {server_ips[i]}")
+        local_file_path = os.path.join(CTA_PATH, f"color{color[i]}_{h}_{q}.json")
+        send_file_to_server(server_ips[i], SERVER_NAME, privkey_path, local_file_path, SERVER_PATH)
 
-        #Run SealPIR Client
-        run_SealPIR_client(PARALLEL_SEAL_PIR_PATH)
+    # Read indices
+    color_indices_path = os.path.join(ORCHESTRATOR_PATH, f"color_indices_{h}_{q}.txt")
+    output_file_path = os.path.join(SEALPIR_PATH, "servers_list.txt")
+    entries = read_indices_from_file(color_indices_path)
 
-        # Construct remote and local file paths
-        server_file_path = os.path.join(SERVER_PATH, "server_log.txt")
+    # Generate servers_list.txt
+    generate_servers_list(server_ips, entries, output_file_path)
 
-        # Sent logs from servers to local machine
-        for i in range(h):
-            local_file_path = os.path.join(LOG_PATH, f"{server_ips[i]}_color{color[i]}_{h}_{q}_log.txt")
-            scp_file_from_server(server_ips[i], SERVER_NAME, privkey_path, local_file_path, server_file_path)
+    # Build SealPIR for client and servers
+    build_parallel_SealPIR()
 
-        # Sent log files from the source to Logs path
-        src_path = os.path.join(CTA_PATH,  f"CTA_{h}_{q}_log.txt")
-        dest_path = os.path.join(LOG_PATH, f"CTA_{h}_{q}_log.txt")
-        copy_and_remove(src_path, dest_path)
-        src_path = os.path.join(SEALPIR_PATH, "client_log.txt")
-        dest_path = os.path.join(LOG_PATH, f"client_{h}_{q}_log.txt")
-        copy_and_remove(src_path, dest_path)
-        src_path = os.path.join(ORCHESTRATOR_PATH, f"color_indices_{h}_{q}.txt")
-        dest_path = os.path.join(LOG_PATH, f"color_indices_{h}_{q}.txt")
-        copy_and_remove(src_path, dest_path)
+    # Send pirmessage_server to each server
+    local_file_path = os.path.join(SEALPIR_PATH, 'pirmessage_server')
+    for i in range(h):
+        print(f"Server address: {server_ips[i]}")
+        send_file_to_server(server_ips[i], SERVER_NAME, privkey_path, local_file_path, SERVER_PATH)
+        # Run SealPIR Servers
+        run_SealPIR_server(server_ips[i], privkey_path, 3000)
 
+    # Run SealPIR Client
+    run_SealPIR_client()
+
+    # Transfer logs from servers to local machine
+    for i in range(h):
+        local_file_path = os.path.join(LOG_PATH, f"color{color[i]}_{h}_{q}_log.txt")
+        receive_file_from_server(server_ips[i], SERVER_NAME, privkey_path, local_file_path, os.path.join(SERVER_PATH, "server_log.txt"))
+
+    # Transfer log files from source to Logs path
+    src_path = os.path.join(CTA_PATH, f"CTA_{h}_{q}_log.txt")
+    dest_path = os.path.join(LOG_PATH, f"CTA_{h}_{q}_log.txt")
+    copy_and_remove_file(src_path, dest_path)
+
+    src_path = os.path.join(SEALPIR_PATH, "client_log.txt")
+    dest_path = os.path.join(LOG_PATH, f"color_client_{h}_{q}_log.txt")
+    copy_and_remove_file(src_path, dest_path)
+
+    src_path = os.path.join(ORCHESTRATOR_PATH, f"color_indices_{h}_{q}.txt")
+    dest_path = os.path.join(LOG_PATH, f"color_indices_{h}_{q}.txt")
+    copy_and_remove_file(src_path, dest_path)
+
+
+def run_PBC(h, q):
+    # Change the working directory to the project directory
+    os.chdir(PBC_PATH)
+    cmake_configure_cmd = "cmake -S . -B build"
+    subprocess.run(cmake_configure_cmd, shell=True, check=True)
+    cmake_build_cmd = "cmake --build build"
+    subprocess.run(cmake_build_cmd, shell=True, check=True)
+
+    # Initialize PBC databases, map
+    server_cmd = f"./build/bin/vectorized_batch_pir server {h} {q} {PBC_PATH}"
+    subprocess.run(server_cmd, shell=True, check=True)
+
+    # Initialize queries
+    client_cmd = f"./build/bin/vectorized_batch_pir client {h} {q} {PBC_PATH}"
+    subprocess.run(client_cmd, shell=True, check=True)
+
+def pbc_parallel_SealPIR(h, q):
+    privkey_path = os.path.join(AWSKEY_PATH, PRIVKEY_FILE)
+    	
+    # Run the PBC
+    print("Running PBC_db: Setup PBC databases...")
+    #run_PBC(h, q)
+    
+    # Read Servers' IP and send PBC databases to each server
+    server_ips = read_servers_ip()
+    for i in range(math.ceil(1.5 * h)):
+        print("Server address: " + server_ips[i])
+        local_file_path = os.path.join(PBC_PATH, f"PBC_data/PBC{i+1}_{h}_{q}.json")
+        send_file_to_server(server_ips[i], SERVER_NAME, privkey_path, local_file_path, SERVER_PATH)
+    	
+    # Read indices
+    pbc_indices_path = os.path.join(PBC_PATH, f"requests/pbc_indices_{h}_{q}.txt")
+    output_file_path = os.path.join(SEALPIR_PATH, "servers_list.txt")
+    entries = read_indices_from_file(pbc_indices_path)
+    # Generate servers_list.txt
+    generate_servers_list(server_ips, entries, output_file_path)
+        
+    # Build SealPIR for client and servers
+    build_parallel_SealPIR()
+
+    # Send pirmessage_server to each server
+    local_file_path = os.path.join(SEALPIR_PATH, 'pirmessage_server')
+    for i in range(math.ceil(1.5 * h)):
+        print("Server address: " + server_ips[i])
+        send_file_to_server(server_ips[i], SERVER_NAME, privkey_path, local_file_path, SERVER_PATH)
+        # Run SealPIR Servers
+        run_SealPIR_server(server_ips[i], privkey_path, 3000)
+
+    # Run SealPIR Client
+    run_SealPIR_client()
+
+    # Construct remote and local file paths
+    server_file_path = os.path.join(SERVER_PATH, "server_log.txt")
+
+    # Sent logs from servers to local machine
+    for i in range(math.ceil(1.5 * h)):
+        local_file_path = os.path.join(LOG_PATH, f"pbc{i+1}_{h}_{q}_log.txt")
+        receive_file_from_server(server_ips[i], SERVER_NAME, privkey_path, local_file_path, server_file_path)
+	
+    # Sent log files from the source to Logs path
+    src_path = os.path.join(SEALPIR_PATH, "client_log.txt")
+    dest_path = os.path.join(LOG_PATH, f"pbc_client_{h}_{q}_log.txt")
+    copy_and_remove_file(src_path, dest_path)
+    
+    src_path = os.path.join(PBC_PATH,  f"client_log/client_{h}_{q}.txt")
+    dest_path = os.path.join(LOG_PATH, f"pbc_indexing_{h}_{q}_log.txt")
+    copy_and_remove_file(src_path, dest_path)
+    
+    src_path = os.path.join(PBC_PATH, f"server_log/server_{h}_{q}.txt")
+    dest_path = os.path.join(LOG_PATH, f"PBC_{h}_{q}_log.txt")
+    copy_and_remove_file(src_path, dest_path)
+    
+    src_path = os.path.join(PBC_PATH, f"requests/pbc_indices_{h}_{q}.txt")
+    dest_path = os.path.join(LOG_PATH, f"pbc_indices_{h}_{q}.txt")
+    copy_and_remove_file(src_path, dest_path)
+        
+if __name__ == "__main__":
+    if len(sys.argv) >= 3:
+        h = int(sys.argv[1])
+        q = int(sys.argv[2])
+        
+        generate_random_TX_index(10)
+        
+        color_parallel_SealPIR(h, q)
+        
+        pbc_parallel_SealPIR(h, q)
+        
         print("Orchestration completed successfully.")
     else:
         print("Insufficient command-line arguments. Usage: python3 orchestrator.py <parameter1: (h)> <parameter2: (q)>")
-
-if __name__ == "__main__":
-    main_parallel_SealPIR()
+    
