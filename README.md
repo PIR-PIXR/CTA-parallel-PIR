@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="400" height="250" src="https://github.com/cnquang/cnquang/assets/87842051/4a1c70e8-c80a-4629-86f9-38fb2ccb2092">
+  <img width="400" height="250" src="https://github.com/cnquang/cnquang/assets/87842051/574661fe-a0fb-489a-bc99-027cf6af3460">
 </p>
 
 # Parallel Private Retrieval of Merkle/Verkle Proofs via Tree Colorings
