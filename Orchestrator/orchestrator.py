@@ -332,7 +332,7 @@ if __name__ == "__main__":
         h = int(sys.argv[1])
         q = int(sys.argv[2])
         
-        generate_random_TX_index(10)
+        generate_random_TX_index(1)
         
         color_parallel_SealPIR(h, q)
         
@@ -341,4 +341,3 @@ if __name__ == "__main__":
         print("Orchestration completed successfully.")
     else:
         print("Insufficient command-line arguments. Usage: python3 orchestrator.py <parameter1: (h)> <parameter2: (q)>")
-    
