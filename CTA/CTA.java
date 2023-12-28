@@ -12,7 +12,6 @@ public class CTA {
         ColoringTreeAlgorithm CTA = new ColoringTreeAlgorithm();
         byte h = 0; //h is the height of a tree
         int q = 0; //q is the number of children of a non-leaf node
-        int j; //a leaf index
         int[] path;
         long[] pathID;
         Random random = new Random();
@@ -49,9 +48,21 @@ public class CTA {
 	} catch (IOException e) {
     	    e.printStackTrace();
 	}
+	
+	String filePath = "list_TXs_" + h + "_" + q + ".txt";
+        List<Integer> randIndices = new ArrayList<>();
 
-        // Testing l times
-        for (int l = 0; l < 10; l++) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                randIndices.add(Integer.parseInt(line.trim()));
+            }
+        } catch (IOException | NumberFormatException e) {
+            e.printStackTrace();
+        }
+
+        // Testing
+        for (Integer j : randIndices) {
             ////////////////////////////////////////Coloring Tree Algorithm/////////////////////////////////////////////
             long startTime = System.nanoTime(); //************************** START *************************
             NodesSets = CTA.ColoringTree(h, q, c); //Coloring q-ary Tree Algorithm
@@ -62,8 +73,6 @@ public class CTA {
             write.println("CTA: " + timeElapsed + " (ms)");
 
             ////////////////////////////////////////Sub-Indices Algorithm///////////////////////////////////////////////
-            j = random.nextInt((int) Math.pow(q, h)) + 1;
-
             SubIndices sb = new SubIndices(h, q, j);
             path = sb.Path();
             pathID = sb.PathID();
