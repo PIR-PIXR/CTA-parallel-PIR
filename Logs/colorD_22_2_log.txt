@@ -1,0 +1,50 @@
+Start Time: Tue Dec 19 11:28:32 2023
+msg: Done with client ipv4:27.33.23.90:54124
+reply_size: 185564 (bytes)
+reply_time: 290512 (us)
+End ---------------------------
+Start Time: Tue Dec 19 11:29:04 2023
+msg: Done with client ipv4:27.33.23.90:54124
+reply_size: 185587 (bytes)
+reply_time: 278115 (us)
+End ---------------------------
+Start Time: Tue Dec 19 11:29:42 2023
+msg: Done with client ipv4:27.33.23.90:54124
+reply_size: 185458 (bytes)
+reply_time: 276570 (us)
+End ---------------------------
+Start Time: Tue Dec 19 11:30:17 2023
+msg: Done with client ipv4:27.33.23.90:54124
+reply_size: 185520 (bytes)
+reply_time: 281430 (us)
+End ---------------------------
+Start Time: Tue Dec 19 11:30:53 2023
+msg: Done with client ipv4:27.33.23.90:54124
+reply_size: 185467 (bytes)
+reply_time: 278022 (us)
+End ---------------------------
+Start Time: Tue Dec 19 11:31:27 2023
+msg: Done with client ipv4:27.33.23.90:54124
+reply_size: 185685 (bytes)
+reply_time: 277803 (us)
+End ---------------------------
+Start Time: Tue Dec 19 11:32:00 2023
+msg: Done with client ipv4:27.33.23.90:54124
+reply_size: 185414 (bytes)
+reply_time: 277868 (us)
+End ---------------------------
+Start Time: Tue Dec 19 11:32:35 2023
+msg: Done with client ipv4:27.33.23.90:54124
+reply_size: 185339 (bytes)
+reply_time: 279081 (us)
+End ---------------------------
+Start Time: Tue Dec 19 11:33:08 2023
+msg: Done with client ipv4:27.33.23.90:54124
+reply_size: 185470 (bytes)
+reply_time: 278873 (us)
+End ---------------------------
+Start Time: Tue Dec 19 11:33:30 2023
+msg: Done with client ipv4:27.33.23.90:54124
+reply_size: 185449 (bytes)
+reply_time: 281544 (us)
+End ---------------------------
