@@ -1,0 +1,350 @@
+Start Time: Fri Dec 22 18:48:13 2023
+Host: 13.238.254.4:3000
+msg: Decode val: 0000000000000000000000000000000000000000000000000000000000000000
+query_size: 92904 (bytes)
+query_time: 137110 (us)
+extract_time: 5516 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:48:16 2023
+Host: 3.26.168.113:3000
+msg: Decode val: FDD8C348B7812E0C1C214FA8A57A6C9596D692E5966C46862A77A1F467FC382C
+query_size: 92864 (bytes)
+query_time: 11455 (us)
+extract_time: 3350 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:48:18 2023
+Host: 3.106.184.59:3000
+msg: Decode val: E7FA642BA546AB8EFFD292BB7C1F5C8338EAC0565AC054E43B6CD184E9336B69
+query_size: 92864 (bytes)
+query_time: 16906 (us)
+extract_time: 4368 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:48:23 2023
+Host: 3.104.63.88:3000
+msg: Decode val: 0A6BC0FE9107998D5BAA0EF2F694DA7D5D81D8F790E296FE19828747DDBA828D
+query_size: 92996 (bytes)
+query_time: 3162 (us)
+extract_time: 4334 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:48:25 2023
+Host: 3.104.63.253:3000
+msg: Decode val: 7C584ED9B25F91CB3F7447570020CD73ADBEB976BC65D2001756EADFAFF6C6A6
+query_size: 92801 (bytes)
+query_time: 87155 (us)
+extract_time: 6225 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:48:43 2023
+Host: 3.26.168.113:3000
+msg: Decode val: 32B009B2B900A79E41A5412F47A061D939A4256DE7D8E673718C3BB72688752A
+query_size: 92852 (bytes)
+query_time: 17189 (us)
+extract_time: 3603 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:48:44 2023
+Host: 13.238.254.4:3000
+msg: Decode val: 0000000000000000000000000000000000000000000000000000000000000000
+query_size: 92883 (bytes)
+query_time: 58067 (us)
+extract_time: 4143 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:48:49 2023
+Host: 3.106.184.59:3000
+msg: Decode val: 0000000000000000000000000000000000000000000000000000000000000000
+query_size: 92934 (bytes)
+query_time: 3100 (us)
+extract_time: 2405 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:48:54 2023
+Host: 3.104.63.88:3000
+msg: Decode val: 0000000000000000000000000000000000000000000000000000000000000000
+query_size: 93097 (bytes)
+query_time: 65144 (us)
+extract_time: 3337 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:48:55 2023
+Host: 3.104.63.253:3000
+msg: Decode val: D1FB40BF13B6087EFCB34D5003DF357166CA7798A4FAD68C24F71471740B97CF
+query_size: 92774 (bytes)
+query_time: 2818 (us)
+extract_time: 3318 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:49:10 2023
+Host: 13.238.254.4:3000
+msg: Decode val: 0000000000000000000000000000000000000000000000000000000000000000
+query_size: 93026 (bytes)
+query_time: 35356 (us)
+extract_time: 3356 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:49:13 2023
+Host: 3.26.168.113:3000
+msg: Decode val: 0000000000000000000000000000000000000000000000000000000000000000
+query_size: 92870 (bytes)
+query_time: 92736 (us)
+extract_time: 3597 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:49:17 2023
+Host: 3.106.184.59:3000
+msg: Decode val: 34BC760B4D699F3A6B45F43A6459F902DBF51F05D7E6610CC41C846E9B7847B2
+query_size: 92924 (bytes)
+query_time: 3336 (us)
+extract_time: 2838 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:49:22 2023
+Host: 3.104.63.253:3000
+msg: Decode val: 0000000000000000000000000000000000000000000000000000000000000000
+query_size: 92921 (bytes)
+query_time: 3426 (us)
+extract_time: 3384 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:49:24 2023
+Host: 3.104.63.88:3000
+msg: Decode val: D8CE144D3C66840E0C4F874A6FA75752F11055D813F97F77CB642BE8A80FF52E
+query_size: 92870 (bytes)
+query_time: 4082 (us)
+extract_time: 4288 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:49:35 2023
+Host: 3.26.168.113:3000
+msg: Decode val: 40E83C8B56F03C93F057C9BFA1E2F14313B4F404AF4DCE1BE62AFE99F8BE901B
+query_size: 93073 (bytes)
+query_time: 5471 (us)
+extract_time: 2708 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:49:36 2023
+Host: 13.238.254.4:3000
+msg: Decode val: B5123B89990387BF22948AE72FABB6E6BF8EA073A872F2115B5D53472E2D4040
+query_size: 92943 (bytes)
+query_time: 9562 (us)
+extract_time: 3043 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:49:36 2023
+Host: 3.106.184.59:3000
+msg: Decode val: 5F7091A5ABB0874DF3E8CB4543A5EB93B0441E9CA4C2B0FB3D30875CBF29ABD5
+query_size: 92858 (bytes)
+query_time: 40192 (us)
+extract_time: 4103 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:49:44 2023
+Host: 3.104.63.88:3000
+msg: Decode val: 787A0AD1B8229F595F057EAA716785AFD19EB6F6F1980E25D2A405E764EE98D7
+query_size: 92827 (bytes)
+query_time: 13752 (us)
+extract_time: 3198 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:49:45 2023
+Host: 3.26.168.113:3000
+msg: Decode val: 0000000000000000000000000000000000000000000000000000000000000000
+query_size: 92981 (bytes)
+query_time: 3930 (us)
+extract_time: 3924 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:49:45 2023
+Host: 3.104.63.253:3000
+msg: Decode val: F6A9A99D47FFF85605277B5C444E6515BCE65839F38EBD5B372A2777CB52167C
+query_size: 92851 (bytes)
+query_time: 14319 (us)
+extract_time: 3614 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:49:46 2023
+Host: 13.238.254.4:3000
+msg: Decode val: 2790F04C4C6F89FB7C23DB78A97BE3C0A51955591C99584C56F226AC027E54EF
+query_size: 92833 (bytes)
+query_time: 92636 (us)
+extract_time: 2986 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:49:50 2023
+Host: 3.106.184.59:3000
+msg: Decode val: 3A9DECFAC84B45123E3117FDE6B85A485D6395E6D212724A07C1EBFC1A4659FA
+query_size: 92860 (bytes)
+query_time: 11465 (us)
+extract_time: 3406 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:49:54 2023
+Host: 13.238.254.4:3000
+msg: Decode val: 03F8FB8DBC100D288280F4B3C89AFE2F1270DFE8CF8CCA45DC5C00FC88676978
+query_size: 92916 (bytes)
+query_time: 4424 (us)
+extract_time: 3686 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:49:54 2023
+Host: 3.104.63.88:3000
+msg: Decode val: 0000000000000000000000000000000000000000000000000000000000000000
+query_size: 92829 (bytes)
+query_time: 4423 (us)
+extract_time: 4248 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:49:55 2023
+Host: 3.26.168.113:3000
+msg: Decode val: 0000000000000000000000000000000000000000000000000000000000000000
+query_size: 92808 (bytes)
+query_time: 9366 (us)
+extract_time: 3010 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:49:56 2023
+Host: 3.104.63.253:3000
+msg: Decode val: 0000000000000000000000000000000000000000000000000000000000000000
+query_size: 92814 (bytes)
+query_time: 13235 (us)
+extract_time: 3308 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:49:58 2023
+Host: 13.238.254.4:3000
+msg: Decode val: FA3ADF6482DBB950284AD904251D294138B0715F32AFC0FE8386D8AFDBCF5108
+query_size: 92804 (bytes)
+query_time: 3515 (us)
+extract_time: 2827 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:49:59 2023
+Host: 3.106.184.59:3000
+msg: Decode val: 0000000000000000000000000000000000000000000000000000000000000000
+query_size: 93098 (bytes)
+query_time: 4895 (us)
+extract_time: 3129 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:50:00 2023
+Host: 3.26.168.113:3000
+msg: Decode val: 0000000000000000000000000000000000000000000000000000000000000000
+query_size: 94132 (bytes)
+query_time: 36915 (us)
+extract_time: 2714 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:50:01 2023
+Host: 3.104.63.88:3000
+msg: Decode val: 425EED8E4245D9EF106790F21A15B5D073E6074498A728638CA2DA4E4530B002
+query_size: 92864 (bytes)
+query_time: 5945 (us)
+extract_time: 2612 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:50:01 2023
+Host: 13.238.254.4:3000
+msg: Decode val: 2A6ABE30C924646D3758CA6F8B56DCC062A10D2D641C979CEF4B9AA15F83B432
+query_size: 92869 (bytes)
+query_time: 2782 (us)
+extract_time: 4118 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:50:02 2023
+Host: 3.104.63.253:3000
+msg: Decode val: 0000000000000000000000000000000000000000000000000000000000000000
+query_size: 93012 (bytes)
+query_time: 2724 (us)
+extract_time: 2766 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:50:02 2023
+Host: 3.26.168.113:3000
+msg: Decode val: 0000000000000000000000000000000000000000000000000000000000000000
+query_size: 92872 (bytes)
+query_time: 2967 (us)
+extract_time: 3635 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:50:03 2023
+Host: 13.238.254.4:3000
+msg: Decode val: 4E396760249F4443C0E04E8D566D5E69C9220922DC11055C53C91566BC30A996
+query_size: 92909 (bytes)
+query_time: 2823 (us)
+extract_time: 3142 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:50:04 2023
+Host: 3.106.184.59:3000
+msg: Decode val: ED03952ED32EBD914620CB142EF23A32735187F6A245FD73394F45464397DC95
+query_size: 92871 (bytes)
+query_time: 12179 (us)
+extract_time: 2804 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:50:05 2023
+Host: 3.26.168.113:3000
+msg: Decode val: 8C5651D36E6023716BCA1364B5832BAA700C1EF7C57E9FFFACABF0FA57E72829
+query_size: 92848 (bytes)
+query_time: 2691 (us)
+extract_time: 4352 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:50:05 2023
+Host: 13.238.254.4:3000
+msg: Decode val: 0000000000000000000000000000000000000000000000000000000000000000
+query_size: 92817 (bytes)
+query_time: 2712 (us)
+extract_time: 3369 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:50:06 2023
+Host: 3.26.168.113:3000
+msg: Decode val: EA7600CD46465E5FE73658B3F37E8A774ED5E922F6845E43579AF5EE85C1F484
+query_size: 92845 (bytes)
+query_time: 2705 (us)
+extract_time: 2471 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:50:07 2023
+Host: 3.104.63.253:3000
+msg: Decode val: 67C5DFC3B4A67455CB98CFC58BDC2AF81BDFBA26EDC512ADD35921EACB6E5667
+query_size: 92869 (bytes)
+query_time: 2885 (us)
+extract_time: 3164 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:50:07 2023
+Host: 3.104.63.88:3000
+msg: Decode val: D77BC2AECADD8E64855733BB250A02BE92964440E1E604A89F0C3B8508F0BBE4
+query_size: 92856 (bytes)
+query_time: 7083 (us)
+extract_time: 2497 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:50:07 2023
+Host: 3.106.184.59:3000
+msg: Decode val: 0000000000000000000000000000000000000000000000000000000000000000
+query_size: 92874 (bytes)
+query_time: 12035 (us)
+extract_time: 4142 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:50:09 2023
+Host: 3.104.63.253:3000
+msg: Decode val: 30008825CF6834A8ED9E9A73D4E68CEBCEB46EA3D0B04682321DC809CF04BEF7
+query_size: 92904 (bytes)
+query_time: 1850 (us)
+extract_time: 3319 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:50:09 2023
+Host: 3.104.63.88:3000
+msg: Decode val: 0000000000000000000000000000000000000000000000000000000000000000
+query_size: 92888 (bytes)
+query_time: 12488 (us)
+extract_time: 4308 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:50:09 2023
+Host: 3.106.184.59:3000
+msg: Decode val: 0D06507E5E75699C0BBD1C9FB3B0E3AE0A45AB309B5F4EC4971A4A9FD5FB8A99
+query_size: 92797 (bytes)
+query_time: 10822 (us)
+extract_time: 4420 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:50:10 2023
+Host: 3.106.184.59:3000
+msg: Decode val: 0000000000000000000000000000000000000000000000000000000000000000
+query_size: 92880 (bytes)
+query_time: 4989 (us)
+extract_time: 2839 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:50:11 2023
+Host: 3.104.63.253:3000
+msg: Decode val: E5F66C33982A5D3CECBC1CBDFEC7F0CD6C3C86F1F1B4FE0DAB9B848734F25BFB
+query_size: 92912 (bytes)
+query_time: 1874 (us)
+extract_time: 2631 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:50:11 2023
+Host: 3.104.63.88:3000
+msg: Decode val: 0000000000000000000000000000000000000000000000000000000000000000
+query_size: 92875 (bytes)
+query_time: 2661 (us)
+extract_time: 4087 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:50:12 2023
+Host: 3.104.63.253:3000
+msg: Decode val: 7B34418E6542ECA301BCD2EF0BA6A1D2D0612EF833A2F55061C33A236C90E72B
+query_size: 92869 (bytes)
+query_time: 3320 (us)
+extract_time: 2729 (us)
+End ---------------------------
+Start Time: Fri Dec 22 18:50:12 2023
+Host: 3.104.63.88:3000
+msg: Decode val: 9CEAD6475060469E904A5D0B93CDE2D7EB1B1626696AF0990D36B3147E150ECF
+query_size: 93006 (bytes)
+query_time: 3180 (us)
+extract_time: 4444 (us)
+End ---------------------------
