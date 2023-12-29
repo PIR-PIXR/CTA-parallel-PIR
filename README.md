@@ -16,7 +16,7 @@ The experiments in the report were run in an Ubuntu 22.04 LTS environment. The V
 Our local machine (Intel® Core™ i5-1035G1 CPU @ 1.00GHz×8, 15GB System memory) was employed for the PIR Client and Orchestrator (see Figure \ref{fig:orchestrator}). For PIR Servers, we ran our experiments using up to 36 PIR servers on the Amazon m5.8xlarge instance (Intel® Xeon® Platinum 8175M CPU @ 2.50GHz, 32 vCPUs, 128GB System memory) that cost around $\$1.92$ per hour, using only one core. In Table 5 and Table 6, we used until $36$ instances because, with h = 24, PBC generates $1.5 \times h = 36$ databases, each of server processed a PIR database in parallel while our CTA employed only $24$ servers. We choose an arbitrary C-PIR such as SealPIR for our baseline implementations.
 
 <p align="center">
-  <img width="500" height="400" src="https://github-production-user-asset-6210df.s3.amazonaws.com/87842051/293294359-1b853360-f044-4b20-bc8b-b54426a19996.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20231229%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231229T005503Z&X-Amz-Expires=300&X-Amz-Signature=c17cd7364c5c6785834e0764c65c6d303bbe4b5ff6695ef42c184783a4edaad0&X-Amz-SignedHeaders=host&actor_id=87842051&key_id=0&repo_id=474514659">
+  <img width="500" height="300" src="https://github-production-user-asset-6210df.s3.amazonaws.com/87842051/293294359-1b853360-f044-4b20-bc8b-b54426a19996.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20231229%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231229T005503Z&X-Amz-Expires=300&X-Amz-Signature=c17cd7364c5c6785834e0764c65c6d303bbe4b5ff6695ef42c184783a4edaad0&X-Amz-SignedHeaders=host&actor_id=87842051&key_id=0&repo_id=474514659">
 </p>
 
 
