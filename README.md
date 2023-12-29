@@ -66,14 +66,20 @@ Our local machine (Intel® Core™ i5-1035G1 CPU @ 1.00GHz×8, 15GB System memor
   <img width="600" height="300" src="https://github-production-user-asset-6210df.s3.amazonaws.com/87842051/293305599-4987b5cc-c7dc-47f6-9413-49b6021f9930.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20231229%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231229T033445Z&X-Amz-Expires=300&X-Amz-Signature=508fd19b27a657e01beb5fe38fcc54ab00c36850d52c5a6e58bbff2de89e4f38&X-Amz-SignedHeaders=host&actor_id=87842051&key_id=0&repo_id=474514659">
 </p>
 
-- ### On local machine
-  Open the **Orchestrator folder** and add list of Public IPv4 address of each instance in each line of the *list_servers_IPs.txt*
-      $ cd /path/to/Parallel-SealPIR
-      $ ./pirmessage_server -port 3000
-  ###### Open the second terminal as Client side
-      $ Change the servers_list.txt with local IP address 127.0.0.1:3000; database file name (change the database name in the Server side to data.json); and index i in the database
-      $ cd /path/to/Parallel-SealPIR
-      $ ./pirmessage_client
+- ### On the local machine
+  Open the **Orchestrator folder** and add the list of Public IPv4 addresses of each instance in each line of the *list_servers_IPs.txt*.
+  
+  #### Open the terminal
+      $ cd Orchestrator
+      $ python3 orchestrator.py <parameter1: (h)> <parameter2: (q)>
+      $ Example: python3 main.py 4 4
+  All the local machine and instances' logs will be stored in the Logs folder.
+
+  #### Plotting
+    $ cd Logs/figures
+    $ python3 figures.py
+  All the figures will be created the same as in the report.
+  
 ---
 ## ACKNOWLEDGMENTS 
-This work was supported by the Australian Research Council through the Discovery Project under Grant DP200100731. Additionally, it was supported through Academic Grants Round 2022 by Ethereum Foundation and received support from the RACE Merit Allocation Scheme (RMAS) in 2024 via the RMIT AWS Cloud Supercomputing Hub in Melbourne, Victoria, Australia, with the grant number RMAS00012.
+This work was supported by the Australian Research Council through the Discovery Project under Grant DP200100731. Additionally, it was supported through Academic Grants Round 2022 by the Ethereum Foundation and received support from the RACE Merit Allocation Scheme (RMAS) in 2024 via the RMIT AWS Cloud Supercomputing Hub in Melbourne, Victoria, Australia, with the grant number RMAS00012.
