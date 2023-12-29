@@ -56,5 +56,16 @@ Our local machine (Intel® Core™ i5-1035G1 CPU @ 1.00GHz×8, 15GB System memor
       $ popd
 
 ---
+## Network Settings
+      
+- ### On AWS
+      Create EC2 instances on AWS, the number of instances based on the tree's height (See Table 5 and Table 6).
+      Ensure all the instances have TCP allow ports in the 0 to 65535 range. Connect all instances via SSH (See Figure below).
+
+<p align="center">
+  <img width="500" height="250" src="https://github-production-user-asset-6210df.s3.amazonaws.com/87842051/293305599-4987b5cc-c7dc-47f6-9413-49b6021f9930.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20231229%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231229T033445Z&X-Amz-Expires=300&X-Amz-Signature=508fd19b27a657e01beb5fe38fcc54ab00c36850d52c5a6e58bbff2de89e4f38&X-Amz-SignedHeaders=host&actor_id=87842051&key_id=0&repo_id=474514659">
+</p>
+
+---
 ## ACKNOWLEDGMENTS 
 This work was supported by the Australian Research Council through the Discovery Project under Grant DP200100731. Additionally, it was supported through Academic Grants Round 2022 by Ethereum Foundation and received support from the RACE Merit Allocation Scheme (RMAS) in 2024 via the RMIT AWS Cloud Supercomputing Hub in Melbourne, Victoria, Australia, with the grant number RMAS00012.
