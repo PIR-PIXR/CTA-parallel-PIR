@@ -76,8 +76,8 @@ Our local machine (Intel® Core™ i5-1035G1 CPU @ 1.00GHz×8, 15GB System memor
   All the local machine and instances' logs will be stored in the Logs folder.
 
   #### Plotting
-    $ cd Logs/figures
-    $ python3 figures.py
+      $ cd Logs/figures
+      $ python3 figures.py
   All the figures will be created the same as in the report.
   
 ---
