@@ -19,6 +19,41 @@ Our local machine (Intel® Core™ i5-1035G1 CPU @ 1.00GHz×8, 15GB System memor
   <img width="500" height="250" src="https://github-production-user-asset-6210df.s3.amazonaws.com/87842051/293294359-1b853360-f044-4b20-bc8b-b54426a19996.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20231229%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231229T005503Z&X-Amz-Expires=300&X-Amz-Signature=c17cd7364c5c6785834e0764c65c6d303bbe4b5ff6695ef42c184783a4edaad0&X-Amz-SignedHeaders=host&actor_id=87842051&key_id=0&repo_id=474514659">
 </p>
 
+---
+## Installing Libraries
+
+- ##### Javac
+      $ sudo apt update
+      $ sudo apt upgrade
+      $ sudo apt install default-jdk
+
+- ##### SEAL 4.0.0
+      $ sudo apt install build-essential cmake clang git g++ libssl-dev libgmp3-dev
+      $ sudo apt update
+      $ sudo apt upgrade
+      $ git clone https://github.com/cnquang/SEAL-4.0.0.git
+      $ cd SEAL-4.0.0
+      $ cmake -S . -B build
+      $ cmake --build build
+      $ sudo cmake --install build
+
+- ##### JSON
+      $ git clone https://github.com/microsoft/vcpkg
+      $ ./vcpkg/bootstrap-vcpkg.sh
+      $ ./vcpkg install rapidjson
+
+- ##### Google gRPC
+      $ sudo apt install -y build-essential autoconf libtool pkg-config
+      $ git clone --recurse-submodules -b v1.58.0 --depth 1 --shallow-submodules https://github.com/grpc/grpc
+      $ cd grpc
+      $ mkdir -p cmake/build
+      $ pushd cmake/build
+      $ cmake -DgRPC_INSTALL=ON \
+        -DgRPC_BUILD_TESTS=OFF \
+        ../..
+      $ make -j 4
+      $ sudo make install
+      $ popd
 
 ---
 ## ACKNOWLEDGMENTS 
