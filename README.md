@@ -13,10 +13,10 @@ The experiments in the report were run in an Ubuntu 22.04 LTS environment. The V
   <img width="600" height="700" src="https://github.com/cnquang/cnquang/assets/87842051/3d7fdb50-439c-43b1-96d4-234ecdee8fe0">
 </p>
 
-Our local machine (Intel® Core™ i5-1035G1 CPU @ 1.00GHz×8, 15GB System memory) was employed for the PIR Client and Orchestrator (see Figure 14). For PIR Servers, we ran our experiments using up to 36 PIR servers on the Amazon m5.8xlarge instance (Intel® Xeon® Platinum 8175M CPU @ 2.50GHz, 32 vCPUs, 128GB System memory) that cost around $\$1.92$ per hour, using only one core. In Table 5 and Table 6, we used until $36$ instances because, with h = 24, PBC generates $1.5 \times h = 36$ databases, each of server processed a PIR database in parallel while our CTA employed only $24$ servers. We choose an arbitrary C-PIR such as SealPIR for our baseline implementations.
+Our local machine (Intel® Core™ i5-1035G1 CPU @ 1.00GHz×8, 15GB System memory) was employed for the PIR Client and Orchestrator (see Figure 14). For PIR Servers, we ran our experiments using up to 36 PIR servers on the Amazon m5.8xlarge instance (Intel® Xeon® Platinum 8175M CPU @ 2.50GHz, 32 vCPUs, 128GB System memory) that cost around $\$1.92$ per hour, using only one core. In Table 5 and Table 6, we used until $36$ instances because, with h = 24, PBC generates $1.5 \times h = 36$ databases. Each server processed a PIR database in parallel, while our CTA employed only $24$ servers. We chose an arbitrary C-PIR, such as SealPIR, for our baseline implementations.
 
 <p align="center">
-  <img width="500" height="250" src="https://github.com/cnquang/cnquang/assets/87842051/b1df7d72-a07a-44d2-812b-0d9fb7770efb">
+  <img width="500" height="250" src="https://github.com/cnquang/cnquang/assets/87842051/cb7d3ac0-0212-4ef8-9a3d-3dbdf7c53100">
 </p>
 
 ---
@@ -63,7 +63,7 @@ Our local machine (Intel® Core™ i5-1035G1 CPU @ 1.00GHz×8, 15GB System memor
   Ensure all the instances have TCP allow ports in the 0 to 65535 range. Connect all instances via SSH (See Figure below - Edit inbound rules).
 
 <p align="center">
-  <img width="600" height="300" src="https://github-production-user-asset-6210df.s3.amazonaws.com/87842051/293305599-4987b5cc-c7dc-47f6-9413-49b6021f9930.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20231229%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231229T033445Z&X-Amz-Expires=300&X-Amz-Signature=508fd19b27a657e01beb5fe38fcc54ab00c36850d52c5a6e58bbff2de89e4f38&X-Amz-SignedHeaders=host&actor_id=87842051&key_id=0&repo_id=474514659">
+  <img width="600" height="300" src="https://github.com/cnquang/cnquang/assets/87842051/b1df7d72-a07a-44d2-812b-0d9fb7770efb">
 </p>
 
 - ### On the local machine
