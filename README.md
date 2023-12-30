@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="500" height="220" src="https://github.com/cnquang/cnquang/assets/87842051/03c984eb-31c0-4f63-a07b-6edacc8daa47">
+  <img width="600" height="220" src="https://github.com/cnquang/cnquang/assets/87842051/03c984eb-31c0-4f63-a07b-6edacc8daa47">
 </p>
 
 
