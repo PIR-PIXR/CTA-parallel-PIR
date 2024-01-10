@@ -50,22 +50,22 @@ public class CTA {
 	}
 	
 	String filePath = "list_TXs_" + h + "_" + q + ".txt";
-        List<Integer> randIndices = new ArrayList<>();
+        List<Long> randIndices = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                randIndices.add(Integer.parseInt(line.trim()));
+                randIndices.add(Long.parseLong(line.trim()));
             }
         } catch (IOException | NumberFormatException e) {
             e.printStackTrace();
         }
 
         // Testing
-        for (Integer j : randIndices) {
+        for (Long j : randIndices) {
             ////////////////////////////////////////Coloring Tree Algorithm/////////////////////////////////////////////
             long startTime = System.nanoTime(); //************************** START *************************
-            NodesSets = CTA.ColoringTree(h, q, c); //Coloring q-ary Tree Algorithm
+            //NodesSets = CTA.ColoringTree(h, q, c); //Coloring q-ary Tree Algorithm
             long endTime = System.nanoTime(); //***************************** END **************************
             long timeElapsed = (endTime - startTime) / 1000000;
             System.out.println("*** Output:");
@@ -98,7 +98,8 @@ public class CTA {
         write.close();
         
         ////////////////////////////////////////Generate Database///////////////////////////////////////////////////
-        genColorDB(h, q, 32, PATH, NodesSets);
+        
+        //genColorDB(h, q, 32, PATH, NodesSets);
     }
 
     private static void genColorDB(int height, int q_size, int SIZE, String PATH, NodesSet[] NodesSets) {
@@ -123,7 +124,7 @@ public class CTA {
         });
     }
 
-    private static void saveRandIndices(char[] color, HashMap<Character, Long> nodeID, LinkedHashMap<Character, Integer> indices, byte h, int q, String filePath, int j) {
+    private static void saveRandIndices(char[] color, HashMap<Character, Long> nodeID, LinkedHashMap<Character, Integer> indices, byte h, int q, String filePath, long j) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
             writer.write("TX_index: " + j);
             writer.newLine();
@@ -652,11 +653,11 @@ class ColoringTreeAlgorithm {
 class SubIndices {
     private byte h; //h is the height of a tree
     private int q; //q is the number of children of a non-leaf node
-    private int j; //a leaf index
+    private long j; //a leaf index
 
     List<List<NumColor>> C = new ArrayList<>();
 
-    public SubIndices(byte h, int q, int j) {
+    public SubIndices(byte h, int q, long j) {
         this.h = h;
         this.q = q;
         this.j = j;
@@ -668,7 +669,7 @@ class SubIndices {
         long[] path_nodeID = new long[h];
         int temp;
 
-        temp = j % q;
+        temp = (int) (j % q);
 
         if (temp == 0) {
             path[h - 1] = q;
