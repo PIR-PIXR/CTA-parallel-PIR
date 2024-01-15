@@ -99,7 +99,7 @@ public class CTA {
         
         ////////////////////////////////////////Generate Database///////////////////////////////////////////////////
         
-        //genColorDB(h, q, 32, PATH, NodesSets);
+        genColorDB(h, q, 32, PATH, NodesSets);
     }
 
     private static void genColorDB(int height, int q_size, int SIZE, String PATH, NodesSet[] NodesSets) {
@@ -502,24 +502,15 @@ class ColoringTreeAlgorithm {
         int a = (int) Math.ceil((q*q - c1)/(q - 1));
         int b = (int) Math.floor((c2 - q)/ (q -1));
 
-        // create first set
-        Set<Integer> setOne = new HashSet<>();
-        for (int i = a; i <= b; i++){
-            setOne.add(i);
-        }
-        // create second set
-        Set<Integer> setTwo = new HashSet<>();
-        for (int i = 1; i <= (q - 1); i++){
-            setTwo.add(i);
-        }
-        // Intersection of two sets
-        setOne.retainAll(setTwo);
+        int max = Math.max(a, 1);
+        int min = Math.min(b, q - 1);
 
-        if (setOne.size() == 1) {
-            for (Integer x : setOne) return x;
+        if (max == min) {
+            return min;
         }
         else {
-            for (Integer x : setOne) {
+            // Loop common elements between [a, b] and [1, q - 1]
+            for (int x = max; x <= min; x++) {
                 y = q - x;
                 S_x = c2 - y;
                 S_y = c1 - x;
@@ -533,7 +524,7 @@ class ColoringTreeAlgorithm {
                 }
             }
         }
-        return 0;
+	return 0;
     }
 
     //Definition (Feasible Color Sequence). A color sequence 𝑐 of dimension ℎ is called
@@ -1089,24 +1080,15 @@ class SubIndices {
         int a = (int) Math.ceil((q*q - c1)/(q - 1));
         int b = (int) Math.floor((c2 - q)/ (q -1));
 
-        // create first set
-        Set<Integer> setOne = new HashSet<>();
-        for (int i = a; i <= b; i++){
-            setOne.add(i);
-        }
-        // create second set
-        Set<Integer> setTwo = new HashSet<>();
-        for (int i = 1; i <= (q - 1); i++){
-            setTwo.add(i);
-        }
-        // Intersection of two sets
-        setOne.retainAll(setTwo);
+        int max = Math.max(a, 1);
+        int min = Math.min(b, q - 1);
 
-        if (setOne.size() == 1) {
-            for (Integer x : setOne) return x;
+        if (max == min) {
+            return min;
         }
         else {
-            for (Integer x : setOne) {
+            // Loop common elements between [a, b] and [1, q - 1]
+            for (int x = max; x <= min; x++) {
                 y = q - x;
                 S_x = c2 - y;
                 S_y = c1 - x;
