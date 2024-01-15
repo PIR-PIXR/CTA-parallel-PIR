@@ -26,7 +26,7 @@ def run_CTA(h, q):
     main_class_name = 'CTA'
 
     subprocess.run(['javac', '-cp', gson_jar_path, java_file_path], check=True) # Compile Java source code
-    subprocess.run(['java', '-Xmx32g','-cp', classpath, main_class_name, str(h), str(q)], check=True)  # Run compiled Java class  # Run compiled Java class
+    subprocess.run(['java', '-Xmx120g','-cp', classpath, main_class_name, str(h), str(q)], check=True)  # Run compiled Java class  # Run compiled Java class
 
 def read_servers_ip():
     file_path = os.path.join(ORCHESTRATOR_PATH, 'list_servers_IPs.txt')
