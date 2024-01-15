@@ -26,7 +26,8 @@ def run_CTA(h, q):
     main_class_name = 'CTA'
 
     subprocess.run(['javac', '-cp', gson_jar_path, java_file_path], check=True) # Compile Java source code
-    subprocess.run(['java', '-Xmx120g','-cp', classpath, main_class_name, str(h), str(q)], check=True)  # Run compiled Java class  # Run compiled Java class
+    subprocess.run(['java', '-cp', classpath, main_class_name, str(h), str(q)], check=True)  # Run compiled Java class
+    #subprocess.run(['java', '-Xmx120g','-cp', classpath, main_class_name, str(h), str(q)], check=True)  # Run compiled Java class
 
 def read_servers_ip():
     file_path = os.path.join(ORCHESTRATOR_PATH, 'list_servers_IPs.txt')
@@ -241,6 +242,10 @@ def color_parallel_SealPIR(h, q):
     src_path = os.path.join(CTA_PATH, f"CTA_{h}_{q}_log.txt")
     dest_path = os.path.join(LOG_PATH, f"CTA_{h}_{q}_log.txt")
     copy_and_remove_file(src_path, dest_path)
+    
+    src_path = os.path.join(CTA_PATH, f"CTAindexing_{h}_{q}_log.txt")
+    dest_path = os.path.join(LOG_PATH, f"CTAindexing_{h}_{q}_log.txt")
+    copy_and_remove_file(src_path, dest_path)
 
     src_path = os.path.join(SEALPIR_PATH, "client_log.txt")
     dest_path = os.path.join(LOG_PATH, f"color_client_{h}_{q}_log.txt")
@@ -272,7 +277,7 @@ def pbc_parallel_SealPIR(h, q):
     	
     # Run the PBC
     print("Running PBC_db: Setup PBC databases...")
-    #run_PBC(h, q)
+    run_PBC(h, q)
     
     # Read Servers' IP and send PBC databases to each server
     server_ips = read_servers_ip()
@@ -332,12 +337,13 @@ if __name__ == "__main__":
         h = int(sys.argv[1])
         q = int(sys.argv[2])
         
-        generate_random_TX_index(1)
+        generate_random_TX_index(10)
         
         color_parallel_SealPIR(h, q)
         
         pbc_parallel_SealPIR(h, q)
         
         print("Orchestration completed successfully.")
-    else:
+    else: 
         print("Insufficient command-line arguments. Usage: python3 orchestrator.py <parameter1: (h)> <parameter2: (q)>")
+    
