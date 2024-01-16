@@ -42,9 +42,11 @@ public class CTA {
         System.out.println("    q-Ary      : q = " + q);
         System.out.println("    c = " + vectorC);
         
-        PrintWriter write = null;
+        PrintWriter logCTA = null;
+        PrintWriter logIndex = null;
 	try {
-    	    write = new PrintWriter(new FileWriter(PATH + "CTA_" + h + "_" + q + "_log.txt"));
+    	    logCTA = new PrintWriter(new FileWriter(PATH + "CTA_" + h + "_" + q + "_log.txt"));
+    	    logIndex = new PrintWriter(new FileWriter(PATH + "CTAindexing_" + h + "_" + q + "_log.txt"));
 	} catch (IOException e) {
     	    e.printStackTrace();
 	}
@@ -70,7 +72,7 @@ public class CTA {
             long timeElapsed = (endTime - startTime) / 1000000;
             System.out.println("*** Output:");
             System.out.println("    Coloring q-ary Tree - Execution time in milliseconds: " + timeElapsed);
-            write.println("CTA: " + timeElapsed + " (ms)");
+            logCTA.println("CTA: " + timeElapsed + " (ms)");
 
             ////////////////////////////////////////Sub-Indices Algorithm///////////////////////////////////////////////
             SubIndices sb = new SubIndices(h, q, j);
@@ -82,7 +84,7 @@ public class CTA {
             long end = System.nanoTime(); // ***************************** END **************************
             long elapsed = (end - start) / 1000;
             System.out.println("    Indexing q-ary Tree - Execution time in microseconds: " + elapsed);
-            write.println("Indexing: " + elapsed + " (us)");
+            logIndex.println("Indexing: " + elapsed + " (us)");
 
             HashMap<Character, Long> NodeID = new HashMap<>();
             int k = 0;
@@ -95,7 +97,8 @@ public class CTA {
             saveRandIndices (color, NodeID, indices, h, q, idxName, j);
         }
         
-        write.close();
+        logCTA.close();
+        logIndex.close();
         
         ////////////////////////////////////////Generate Database///////////////////////////////////////////////////
         
