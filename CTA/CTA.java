@@ -65,7 +65,7 @@ public class CTA {
         for (Long j : randIndices) {
             ////////////////////////////////////////Coloring Tree Algorithm/////////////////////////////////////////////
             long startTime = System.nanoTime(); //************************** START *************************
-            //NodesSets = CTA.ColoringTree(h, q, c); //Coloring q-ary Tree Algorithm
+            NodesSets = CTA.ColoringTree(h, q, c); //Coloring q-ary Tree Algorithm
             long endTime = System.nanoTime(); //***************************** END **************************
             long timeElapsed = (endTime - startTime) / 1000000;
             System.out.println("*** Output:");
