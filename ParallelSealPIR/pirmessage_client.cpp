@@ -13,6 +13,7 @@
 #include "helper.hpp"
 #include "safequeue.hpp"
 #include "/home/nhat/Desktop/vcpkg/installed/x64-linux/include/rapidjson/document.h"
+//#include "/home/dowload/vcpkg/installed/x64-linux/include/rapidjson/document.h"
 
 using grpc::Channel;
 using grpc::ClientContext;
@@ -180,7 +181,6 @@ class ClientWorker {
     requestData.mutable_pirconfig()->set_d(2);
     requestData.mutable_pirconfig()->set_num_of_items(number_of_items);
     requestData.mutable_pirconfig()->set_size_per_item(size_per_item);
-
     requestData.mutable_pirconfig()->mutable_epparams()->assign(ecp);
     requestData.set_gkey(gkey);
     requestData.set_query(client_stream.str());
@@ -189,7 +189,6 @@ class ClientWorker {
     return 0;
 }
 
- 
  private:
   std::unique_ptr<PIRService::Stub> stub_;
   uint64_t ele_index;
@@ -199,55 +198,80 @@ public:
   ClientResultLog Log;
 };
 
-
-void requestThread(vector<ClientRequestInfo>::iterator requestInfo)//boost::shared_ptr<ClientRequestInfo> requestInfo)//
-{
-    ClientWorker client(grpc::CreateChannel(requestInfo->hostAddr, grpc::InsecureChannelCredentials()),requestInfo->jsDBFile,requestInfo->eIndex);
-    pir_message::DBInfo dbInfo;
-    requestInfo->print();
-    client.Log.Server = requestInfo->hostAddr;
-    if (client.GetDBInfo(dbInfo) >=0) {
-        //cout<<"Get db info successfully "<<dbInfo.num_of_items()<<endl;
-        RequestData requestData;
-        PIRClient *pirClient = NULL;
-        if (client.PrepareData(dbInfo.num_of_items(),dbInfo.size_per_item(),pirClient,requestData) >=0) {
-            
-            client.GetPIRFromServer(pirClient,requestData);
-            
-        }else{
-                      
-          client.Log.Msg = "Prepare data error. Cannot get encription parameters.";
-          //cout<<client.Log.Msg<<endl;
-         
-        }
-        if (pirClient != NULL) {
-            delete pirClient;
-        }
-        requestData.Clear();
-    }else{       
-        client.Log.Msg = "Cannot get database information";
-        //cout<<client.Log.Msg<<endl;       
-    }
-    clientLogResult(&fLogfile,&client.Log);
-}
-
-int main(int argc, char** argv) { 
-     
-    cout<<"Get list server"<<endl;
+int main(int argc, char** argv) {
+    //cout<<"Get list server"<<endl;
     std::vector<ClientRequestInfo> listServers = getListServers("servers_list.txt");   
-    vector<ClientRequestInfo>::iterator ptr; 
-    std::vector<std::thread> listThreads;
+    int i,j = 0;
+    int num_servers = listServers.size();
+    
+    cout<<"num_servers = "<< num_servers <<endl;
+    
+    ClientWorker* arrayClient[num_servers];
+    pir_message::DBInfo dbInfo[num_servers];
+
+    RequestData requestData[num_servers];
+    PIRClient* pirClient[num_servers];
+
+    int resGetDBInfo[num_servers];
+    int resPrepareData[num_servers];
 
     fLogfile.open(CLIENT_LOG_FILE, ios::app);
+    vector<ClientRequestInfo>::iterator requestInfo; 
+      
+    for (requestInfo = listServers.begin(); requestInfo < listServers.end(); requestInfo++) {
+       //cout<<"Do thread with server "<<endl;
+       requestInfo->print();
+          if (j <num_servers){
+              arrayClient[j] = new ClientWorker(grpc::CreateChannel(requestInfo->hostAddr, grpc::InsecureChannelCredentials()),requestInfo->jsDBFile,requestInfo->eIndex);
+              arrayClient[j]->Log.Server = requestInfo->hostAddr;
+              j++;
+          }
+      }  
+    
     cout<<"================BEGIN============="<<endl;
-    for (ptr = listServers.begin(); ptr < listServers.end(); ptr++) {
-        listThreads.emplace_back(&requestThread,std::move(ptr));      
-    }   
-    for(auto& t: listThreads){
-        t.join();
+    
+    
+    //get dbInfo
+    for (i = 0; i < j; i++)
+    {
+        resGetDBInfo[i] = arrayClient[i]->GetDBInfo(dbInfo[i]);
     }
+
+    //queries
+    for (i = 0; i < j; i++)
+    {
+       if (resGetDBInfo[i] >=0)
+       {
+          resPrepareData[i] = arrayClient[i]->PrepareData(dbInfo[i].num_of_items(),dbInfo[i].size_per_item(),pirClient[i],requestData[i]);
+       }
+    }
+
+    //extracts
+    for (i = 0; i < j; i++)
+    {
+       if (resPrepareData[i] >=0)
+       {
+          arrayClient[i]->GetPIRFromServer(pirClient[i],requestData[i]);
+
+          clientLogResult(&fLogfile,&arrayClient[i]->Log);
+       }
+    }
+
+    //free memory
+    for (i = 0; i < j; i++)
+    {
+      if (arrayClient[i] != NULL){
+        delete arrayClient[i];
+      }
+      if (pirClient[i]!=NULL){
+        delete pirClient[i];
+      }
+      requestData[i].Clear();
+    }
+    
     fLogfile.close();
     listServers.clear();
+    
     cout<<"================END==============="<<endl;
     return 0;
 }
