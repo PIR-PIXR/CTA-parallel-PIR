@@ -341,7 +341,7 @@ if __name__ == "__main__":
         
         color_parallel_SealPIR(h, q)
         
-        pbc_parallel_SealPIR(h, q)
+        #pbc_parallel_SealPIR(h, q)
         
         print("Orchestration completed successfully.")
     else: 
