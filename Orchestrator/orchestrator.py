@@ -160,6 +160,8 @@ def run_SealPIR_server(server_ip, privkey_path, port):
     ssh.connect(server_ip, username=SERVER_NAME, key_filename=privkey_path)
 
     # Run pirmessage_server on the remote server with the specified port
+    command = f"cd {SERVER_PATH} && rm server_log.txt"
+    ssh.exec_command(command)
     command = f"cd {SERVER_PATH} && ./pirmessage_server -port {port}"
     ssh.exec_command(command)
 
@@ -230,6 +232,10 @@ def color_parallel_SealPIR(h, q):
         # Run SealPIR Servers
         run_SealPIR_server(server_ips[i], privkey_path, 3000)
 
+    file_path = os.path.join(SEALPIR_PATH, "client_log.txt")
+    if os.path.exists(file_path):
+       os.remove(file_path)
+      
     # Run SealPIR Client
     run_SealPIR_client()
 
@@ -304,6 +310,7 @@ def pbc_parallel_SealPIR(h, q):
         # Run SealPIR Servers
         run_SealPIR_server(server_ips[i], privkey_path, 3000)
 
+    os.remove(os.path.join(SEALPIR_PATH, "client_log.txt"))
     # Run SealPIR Client
     run_SealPIR_client()
 
@@ -337,7 +344,7 @@ if __name__ == "__main__":
         h = int(sys.argv[1])
         q = int(sys.argv[2])
         
-        generate_random_TX_index(1)
+        generate_random_TX_index(20)
         
         color_parallel_SealPIR(h, q)
         
@@ -346,4 +353,3 @@ if __name__ == "__main__":
         print("Orchestration completed successfully.")
     else: 
         print("Insufficient command-line arguments. Usage: python3 orchestrator.py <parameter1: (h)> <parameter2: (q)>")
-    
