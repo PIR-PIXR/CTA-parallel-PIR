@@ -56,7 +56,7 @@ Our local machine (Intel® Core™ i5-1035G1 CPU @ 1.00GHz×8, 15GB System memor
       $ sudo make install
       $ popd
   
-- ##### Boost.Asio gRPC
+- ##### Boost.Asio
       $ sudo apt-get install libboost-all-dev
   
 ---
