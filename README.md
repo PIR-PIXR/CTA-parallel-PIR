@@ -58,6 +58,11 @@ Our local machine (Intel® Core™ i5-1035G1 CPU @ 1.00GHz×8, 15GB System memor
   
 - ##### Boost.Asio
       $ sudo apt-get install libboost-all-dev
+
+- ##### scp
+      $ sudo apt install python3-pip
+      $ pip install scp
+      $ pip3 install scp
   
 ---
 ## Network Settings
