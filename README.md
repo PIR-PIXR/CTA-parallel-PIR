@@ -40,6 +40,7 @@ Our local machine (Intel® Core™ i5-1035G1 CPU @ 1.00GHz×8, 15GB System memor
 - ##### JSON
       $ git clone https://github.com/microsoft/vcpkg
       $ ./vcpkg/bootstrap-vcpkg.sh
+      $ cd vcpkg
       $ ./vcpkg install rapidjson
 
 - ##### Google gRPC
