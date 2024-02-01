@@ -55,7 +55,10 @@ Our local machine (Intel® Core™ i5-1035G1 CPU @ 1.00GHz×8, 15GB System memor
       $ make -j 4
       $ sudo make install
       $ popd
-
+  
+- ##### Boost.Asio gRPC
+      $ sudo apt-get install libboost-all-dev
+  
 ---
 ## Network Settings
       
