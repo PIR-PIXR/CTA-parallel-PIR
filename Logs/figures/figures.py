@@ -1475,7 +1475,7 @@ print(cta_indexing_time_16)
 print(cta_indexing_time_128)
 print(cta_indexing_time_256)'''
 
-print(cta_time_2)
+'''print(cta_time_2)
 print(cta_time_16)
 print(cta_time_128)
-print(cta_time_256)
+print(cta_time_256)'''
