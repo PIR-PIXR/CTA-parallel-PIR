@@ -231,10 +231,6 @@ def color_parallel_SealPIR(h, q):
         send_file_to_server(server_ips[i], SERVER_NAME, privkey_path, local_file_path, SERVER_PATH)
         # Run SealPIR Servers
         run_SealPIR_server(server_ips[i], privkey_path, 3000)
-
-    file_path = os.path.join(SEALPIR_PATH, "client_log.txt")
-    if os.path.exists(file_path):
-       os.remove(file_path)
       
     # Run SealPIR Client
     run_SealPIR_client()
@@ -310,7 +306,6 @@ def pbc_parallel_SealPIR(h, q):
         # Run SealPIR Servers
         run_SealPIR_server(server_ips[i], privkey_path, 3000)
 
-    os.remove(os.path.join(SEALPIR_PATH, "client_log.txt"))
     # Run SealPIR Client
     run_SealPIR_client()
 
