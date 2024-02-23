@@ -39,6 +39,7 @@ Our local machine (Intel® Core™ i5-1035G1 CPU @ 1.00GHz×8, 15GB System memor
 
 - ##### JSON
       $ sudo apt-get install curl zip unzip tar
+      $ sudo apt-get install pkg-config
       $ git clone https://github.com/microsoft/vcpkg
       $ ./vcpkg/bootstrap-vcpkg.sh
       $ cd vcpkg
