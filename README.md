@@ -83,7 +83,7 @@ Our local machine (Intel® Core™ i5-1035G1 CPU @ 1.00GHz×8, 15GB System memor
   #### Open the terminal
       $ cd Orchestrator
       $ python3 orchestrator.py <parameter1: (h)> <parameter2: (q)>
-      $ Example: python3 main.py 4 4
+      $ Example: python3 orchestrator.py 4 4
   All the local machine and instances' logs will be stored in the Logs folder.
 
   #### Plotting
